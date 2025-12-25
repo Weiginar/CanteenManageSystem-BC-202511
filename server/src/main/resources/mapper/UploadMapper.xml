@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.demo.dao.UploadMapper">
+<mapper namespace="dao.com.system.canteen.UploadMapper">
 
-    <resultMap type="com.project.demo.entity.Upload" id="UploadResult">
+    <resultMap type="entity.com.system.canteen.Upload" id="UploadResult">
         <result property="uploadId"    column="upload_id"    />
         <result property="name"    column="name"    />
         <result property="path"    column="path"    />
@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select upload_id, name, path, file, display, father_id, dir, type from upload
     </sql>
 
-    <select id="selectUploadList" parameterType="com.project.demo.entity.Upload" resultMap="UploadResult">
+    <select id="selectUploadList" parameterType="entity.com.system.canteen.Upload" resultMap="UploadResult">
         <include refid="selectUploadVo"/>
         <where>
             <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where upload_id = #{uploadId}
     </select>
 
-    <insert id="insertUpload" parameterType="com.project.demo.entity.Upload" useGeneratedKeys="true" keyProperty="uploadId">
+    <insert id="insertUpload" parameterType="entity.com.system.canteen.Upload" useGeneratedKeys="true" keyProperty="uploadId">
         insert into upload
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="name != null  and name != ''">name,</if>
@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
-    <update id="updateUpload" parameterType="com.project.demo.entity.Upload">
+    <update id="updateUpload" parameterType="entity.com.system.canteen.Upload">
         update upload
         <trim prefix="SET" suffixOverrides=",">
             <if test="name != null  and name != ''">name = #{name},</if>

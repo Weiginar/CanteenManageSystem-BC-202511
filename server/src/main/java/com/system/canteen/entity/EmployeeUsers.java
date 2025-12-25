@@ -1,0 +1,59 @@
+package com.system.canteen.entity;
+
+import java.sql.Timestamp;
+import java.io.Serializable;
+import lombok.*;
+import javax.persistence.*;
+
+
+/**
+ * 员工用户：(EmployeeUsers)表实体类
+ *
+ */
+@Setter
+@Getter
+@Entity(name = "EmployeeUsers")
+public class EmployeeUsers implements Serializable {
+
+    // EmployeeUsers编号
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "employee_users_id")
+    private Integer employee_users_id;
+
+    // 员工姓名
+    @Basic
+    private String employee_name;
+    // 员工性别
+    @Basic
+    private String employee_gender;
+    // 员工工号
+    @Basic
+    private String employee_id;
+
+
+
+
+
+
+
+
+
+
+
+
+    // 用户编号
+    @Id
+    @Column(name = "user_id")
+    private Integer userId;
+
+
+    // 更新时间
+    @Basic
+    private Timestamp update_time;
+
+    // 创建时间
+    @Basic
+    private Timestamp create_time;
+
+}

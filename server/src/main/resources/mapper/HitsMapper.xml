@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.demo.dao.HitsMapper">
+<mapper namespace="dao.com.system.canteen.HitsMapper">
 
-    <resultMap type="com.project.demo.entity.Hits" id="HitsResult">
+    <resultMap type="entity.com.system.canteen.Hits" id="HitsResult">
         <result property="hitsId"    column="hits_id"    />
         <result property="userId"    column="user_id"    />
         <result property="createTime"    column="create_time"    />
@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select hits_id, user_id, create_time, update_time, source_table, source_field, source_id from hits
     </sql>
 
-    <select id="selectHitsList" parameterType="com.project.demo.entity.Hits" resultMap="HitsResult">
+    <select id="selectHitsList" parameterType="entity.com.system.canteen.Hits" resultMap="HitsResult">
         <include refid="selectHitsVo"/>
         <where>
             <if test="userId != null "> and user_id = #{userId}</if>
@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where hits_id = #{hitsId}
     </select>
 
-    <insert id="insertHits" parameterType="com.project.demo.entity.Hits" useGeneratedKeys="true" keyProperty="hitsId">
+    <insert id="insertHits" parameterType="entity.com.system.canteen.Hits" useGeneratedKeys="true" keyProperty="hitsId">
         insert into hits
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userId != null ">user_id,</if>
@@ -53,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
-    <update id="updateHits" parameterType="com.project.demo.entity.Hits">
+    <update id="updateHits" parameterType="entity.com.system.canteen.Hits">
         update hits
         <trim prefix="SET" suffixOverrides=",">
             <if test="userId != null ">user_id = #{userId},</if>

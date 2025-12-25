@@ -1,0 +1,28 @@
+package com.system.canteen.controller;
+
+import com.system.canteen.entity.Praise;
+import com.system.canteen.service.PraiseService;
+
+import com.system.canteen.controller.base.BaseController;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * 点赞：(Praise)表控制层
+ *
+ */
+@RestController
+@RequestMapping("praise")
+public class PraiseController extends BaseController<Praise, PraiseService> {
+    /**
+     * 服务对象
+     */
+    @Autowired
+    public PraiseController(PraiseService service) {
+        setService(service);
+    }
+
+}
+
+

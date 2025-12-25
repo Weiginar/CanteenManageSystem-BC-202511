@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.demo.dao.NoticeMapper">
+<mapper namespace="dao.com.system.canteen.NoticeMapper">
 
-    <resultMap type="com.project.demo.entity.Notice" id="NoticeResult">
+    <resultMap type="entity.com.system.canteen.Notice" id="NoticeResult">
         <result property="noticeId"    column="notice_id"    />
         <result property="title"    column="title"    />
         <result property="content"    column="content"    />
@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select notice_id, title, content, create_time, update_time from notice
     </sql>
 
-    <select id="selectNoticeList" parameterType="com.project.demo.entity.Notice" resultMap="NoticeResult">
+    <select id="selectNoticeList" parameterType="entity.com.system.canteen.Notice" resultMap="NoticeResult">
         <include refid="selectNoticeVo"/>
         <where>
             <if test="title != null  and title != ''"> and title = #{title}</if>
@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where notice_id = #{noticeId}
     </select>
 
-    <insert id="insertNotice" parameterType="com.project.demo.entity.Notice" useGeneratedKeys="true" keyProperty="noticeId">
+    <insert id="insertNotice" parameterType="entity.com.system.canteen.Notice" useGeneratedKeys="true" keyProperty="noticeId">
         insert into notice
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="title != null  and title != ''">title,</if>
@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
-    <update id="updateNotice" parameterType="com.project.demo.entity.Notice">
+    <update id="updateNotice" parameterType="entity.com.system.canteen.Notice">
         update notice
         <trim prefix="SET" suffixOverrides=",">
             <if test="title != null  and title != ''">title = #{title},</if>
