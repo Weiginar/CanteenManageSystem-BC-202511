@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.demo.dao.ArticleTypeMapper">
+<mapper namespace="dao.com.system.canteen.ArticleTypeMapper">
 
-    <resultMap type="com.project.demo.entity.ArticleType" id="ArticleTypeResult">
+    <resultMap type="entity.com.system.canteen.ArticleType" id="ArticleTypeResult">
         <result property="typeId"    column="type_id"    />
         <result property="display"    column="display"    />
         <result property="name"    column="name"    />
@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select type_id, display, name, father_id, description, icon, url, create_time, update_time from article_type
     </sql>
 
-    <select id="selectArticleTypeList" parameterType="com.project.demo.entity.ArticleType" resultMap="ArticleTypeResult">
+    <select id="selectArticleTypeList" parameterType="entity.com.system.canteen.ArticleType" resultMap="ArticleTypeResult">
         <include refid="selectArticleTypeVo"/>
         <where>
             <if test="display != null "> and display = #{display}</if>
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where type_id = #{typeId}
     </select>
 
-    <insert id="insertArticleType" parameterType="com.project.demo.entity.ArticleType" useGeneratedKeys="true" keyProperty="typeId">
+    <insert id="insertArticleType" parameterType="entity.com.system.canteen.ArticleType" useGeneratedKeys="true" keyProperty="typeId">
         insert into article_type
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="display != null ">display,</if>
@@ -61,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
-    <update id="updateArticleType" parameterType="com.project.demo.entity.ArticleType">
+    <update id="updateArticleType" parameterType="entity.com.system.canteen.ArticleType">
         update article_type
         <trim prefix="SET" suffixOverrides=",">
             <if test="display != null ">display = #{display},</if>

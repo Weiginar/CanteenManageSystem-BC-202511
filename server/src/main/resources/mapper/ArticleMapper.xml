@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.demo.dao.ArticleMapper">
+<mapper namespace="dao.com.system.canteen.ArticleMapper">
 
-    <resultMap type="com.project.demo.entity.Article" id="ArticleResult">
+    <resultMap type="entity.com.system.canteen.Article" id="ArticleResult">
         <result property="articleId"    column="article_id"    />
         <result property="title"    column="title"    />
         <result property="type"    column="type"    />
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description from article
     </sql>
 
-    <select id="selectArticleList" parameterType="com.project.demo.entity.Article" resultMap="ArticleResult">
+    <select id="selectArticleList" parameterType="entity.com.system.canteen.Article" resultMap="ArticleResult">
         <include refid="selectArticleVo"/>
         <where>
             <if test="type != null  and type != ''"> and type = #{type}</if>
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where article_id = #{articleId}
     </select>
 
-    <insert id="insertArticle" parameterType="com.project.demo.entity.Article" useGeneratedKeys="true" keyProperty="articleId">
+    <insert id="insertArticle" parameterType="entity.com.system.canteen.Article" useGeneratedKeys="true" keyProperty="articleId">
         insert into article
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="title != null  and title != ''">title,</if>
@@ -76,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
-    <update id="updateArticle" parameterType="com.project.demo.entity.Article">
+    <update id="updateArticle" parameterType="entity.com.system.canteen.Article">
         update article
         <trim prefix="SET" suffixOverrides=",">
             <if test="title != null  and title != ''">title = #{title},</if>

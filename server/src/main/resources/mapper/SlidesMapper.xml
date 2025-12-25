@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.demo.dao.SlidesMapper">
+<mapper namespace="dao.com.system.canteen.SlidesMapper">
 
-    <resultMap type="com.project.demo.entity.Slides" id="SlidesResult">
+    <resultMap type="entity.com.system.canteen.Slides" id="SlidesResult">
         <result property="slidesId"    column="slides_id"    />
         <result property="title"    column="title"    />
         <result property="content"    column="content"    />
@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select slides_id, title, content, url, img, hits, create_time, update_time from slides
     </sql>
 
-    <select id="selectSlidesList" parameterType="com.project.demo.entity.Slides" resultMap="SlidesResult">
+    <select id="selectSlidesList" parameterType="entity.com.system.canteen.Slides" resultMap="SlidesResult">
         <include refid="selectSlidesVo"/>
         <where>
             <if test="title != null  and title != ''"> and title = #{title}</if>
@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where slides_id = #{slidesId}
     </select>
 
-    <insert id="insertSlides" parameterType="com.project.demo.entity.Slides" useGeneratedKeys="true" keyProperty="slidesId">
+    <insert id="insertSlides" parameterType="entity.com.system.canteen.Slides" useGeneratedKeys="true" keyProperty="slidesId">
         insert into slides
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="title != null  and title != ''">title,</if>
@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
-    <update id="updateSlides" parameterType="com.project.demo.entity.Slides">
+    <update id="updateSlides" parameterType="entity.com.system.canteen.Slides">
         update slides
         <trim prefix="SET" suffixOverrides=",">
             <if test="title != null  and title != ''">title = #{title},</if>

@@ -1,3 +1,5 @@
+create database demo;
+use demo;
 DROP TABLE IF EXISTS `slides`;
 CREATE TABLE `slides` (
   `slides_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '轮播图ID：',

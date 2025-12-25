@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.demo.dao.AccessTokenMapper">
+<mapper namespace="dao.com.system.canteen.AccessTokenMapper">
 
-    <resultMap type="com.project.demo.entity.AccessToken" id="AccessTokenResult">
+    <resultMap type="entity.com.system.canteen.AccessToken" id="AccessTokenResult">
         <result property="tokenId"    column="token_id"    />
         <result property="token"    column="token"    />
         <result property="maxage"    column="maxage"    />
@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select token_id, token, maxage, create_time, update_time, user_id from access_token
     </sql>
 
-    <select id="selectAccessTokenList" parameterType="com.project.demo.entity.AccessToken" resultMap="AccessTokenResult">
+    <select id="selectAccessTokenList" parameterType="entity.com.system.canteen.AccessToken" resultMap="AccessTokenResult">
         <include refid="selectAccessTokenVo"/>
         <where>
             <if test="token != null  and token != ''"> and token = #{token}</if>
@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where token_id = #{tokenId}
     </select>
 
-    <insert id="insertAccessToken" parameterType="com.project.demo.entity.AccessToken" useGeneratedKeys="true" keyProperty="tokenId">
+    <insert id="insertAccessToken" parameterType="entity.com.system.canteen.AccessToken" useGeneratedKeys="true" keyProperty="tokenId">
         insert into access_token
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="token != null  and token != ''">token,</if>
@@ -49,7 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
-    <update id="updateAccessToken" parameterType="com.project.demo.entity.AccessToken">
+    <update id="updateAccessToken" parameterType="entity.com.system.canteen.AccessToken">
         update access_token
         <trim prefix="SET" suffixOverrides=",">
             <if test="token != null  and token != ''">token = #{token},</if>

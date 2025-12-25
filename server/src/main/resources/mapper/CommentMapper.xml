@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.demo.dao.CommentMapper">
+<mapper namespace="dao.com.system.canteen.CommentMapper">
 
-    <resultMap type="com.project.demo.entity.Comment" id="CommentResult">
+    <resultMap type="entity.com.system.canteen.Comment" id="CommentResult">
         <result property="commentId"    column="comment_id"    />
         <result property="userId"    column="user_id"    />
         <result property="replyToId"    column="reply_to_id"    />
@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select comment_id, user_id, reply_to_id, content, nickname, avatar, create_time, update_time, source_table, source_field, source_id from comment
     </sql>
 
-    <select id="selectCommentList" parameterType="com.project.demo.entity.Comment" resultMap="CommentResult">
+    <select id="selectCommentList" parameterType="entity.com.system.canteen.Comment" resultMap="CommentResult">
         <include refid="selectCommentVo"/>
         <where>
             <if test="userId != null "> and user_id = #{userId}</if>
@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where comment_id = #{commentId}
     </select>
 
-    <insert id="insertComment" parameterType="com.project.demo.entity.Comment" useGeneratedKeys="true" keyProperty="commentId">
+    <insert id="insertComment" parameterType="entity.com.system.canteen.Comment" useGeneratedKeys="true" keyProperty="commentId">
         insert into comment
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userId != null ">user_id,</if>
@@ -69,7 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
-    <update id="updateComment" parameterType="com.project.demo.entity.Comment">
+    <update id="updateComment" parameterType="entity.com.system.canteen.Comment">
         update comment
         <trim prefix="SET" suffixOverrides=",">
             <if test="userId != null ">user_id = #{userId},</if>
